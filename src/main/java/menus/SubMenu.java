@@ -1,5 +1,6 @@
 package menus;
 
+import model.AnimalType;
 import model.Handler;
 import model.Login;
 import model.Veterinarian;
@@ -35,7 +36,7 @@ public class SubMenu {
         System.out.println("3: Search Handler by Id");
         System.out.println("4: Search Veterinarian by Name");
         System.out.println("5: List all Animals");
-        System.out.println("6: List animals by Animal Type");
+        System.out.println("6: Add AnimalType");
         System.out.println("7: ");
         System.out.println("100 - Quit");
 
@@ -105,7 +106,7 @@ public class SubMenu {
 
                     break;
                 case 6:
-
+                    menuAnimalType(input);
                     break;
                 case 7:
 
@@ -159,6 +160,7 @@ public class SubMenu {
 
         menuChoice(input);
     }
+    
 
     public void menuSearchVeterinarianByName(Scanner input) {
         System.out.println("Please enter the Veterinarian name");
@@ -169,9 +171,20 @@ public class SubMenu {
             System.out.println(m);
     }
 
-    public void menuFindHandlerById(Scanner input){
+    public void menuAnimalType(Scanner input){
         System.out.println("Enter handlers' id:");
         int id = input.nextInt();
         System.out.println(hr.findById(id));
+    }
+    public void menuAddAnimalType(Scanner input){
+       AnimalType AnimalType = new AnimalType();
+
+        System.out.println("You are adding a new veterinarian!");
+        System.out.println("Please enter animal type:");
+        AnimalType.setAnimalType(input.next());
+        vr.addAnimalType(AnimalType);
+        System.out.println("Animal type added!");
+
+        menuChoice(input);
     }
 }

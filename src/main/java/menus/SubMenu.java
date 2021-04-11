@@ -9,6 +9,7 @@ import persistence.LoginRepository;
 import persistence.VeterinarianRepository;
 import util.DBUtil;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -159,10 +160,12 @@ public class SubMenu {
         menuChoice(input);
     }
 
-    public void menuFindHandlerById(Scanner input){
-        System.out.println("Enter handlers' id:");
-        int id = input.nextInt();
-        System.out.println(hr.findById(id));
+    public void menuSearchVeterinarianByName(Scanner input) {
+        System.out.println("Please enter the Veterinarian name");
+        String name = input.next();
+        List<Veterinarian> VeterinarianList = vr.searchByName(name);
+        System.out.println("The following Veterinarians found:");
+        for (Veterinarian m : VeterinarianList)
+            System.out.println(m);
     }
-
 }

@@ -1,10 +1,7 @@
 package model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -14,6 +11,19 @@ public class Cage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCage;
     private String enclosureName;
+    private int AnimalType;
+
+    @ManyToOne
+    @JoinColumn (name = "idHandler")
+    private Handler handler;
+
+    @OneToMany
+    @JoinColumn (name = "AnimalType")
+    private AnimalType animalType;
+
+    public int getAnimalType() { return AnimalType; }
+
+    public void setAnimalType(int animalType) { AnimalType = animalType;}
 
     public int getIdCage() { return idCage; }
 
@@ -23,6 +33,10 @@ public class Cage {
 
     public void setEnclosureName(String enclosureName) { this.enclosureName = enclosureName; }
 
+    public Handler getHandler() { return handler; }
+
+    public void setHandler(Handler handler) { this.handler = handler; }
+
     @Override
     public String toString() {
         return "Cage{" +
@@ -30,4 +44,6 @@ public class Cage {
                 ", enclosureName='" + enclosureName + '\'' +
                 '}';
     }
+
+
 }

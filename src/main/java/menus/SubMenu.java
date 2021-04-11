@@ -5,6 +5,7 @@ import model.Handler;
 import model.Login;
 import model.Veterinarian;
 import net.bytebuddy.jar.asm.Handle;
+import persistence.AnimalTypeRepository;
 import persistence.HandlerRepository;
 import persistence.LoginRepository;
 import persistence.VeterinarianRepository;
@@ -19,11 +20,13 @@ public class SubMenu {
     private HandlerRepository hr;
     private VeterinarianRepository vr;
     private LoginRepository lr;
+    private AnimalTypeRepository atr;
 
     public SubMenu() {
     this.hr = new HandlerRepository();
     this.vr = new VeterinarianRepository();
     this.lr = new LoginRepository();
+    this.atr = new AnimalTypeRepository;
     }
 
     private int menuOptions(Scanner input) {
@@ -182,7 +185,7 @@ public class SubMenu {
         System.out.println("You are adding a new veterinarian!");
         System.out.println("Please enter animal type:");
         AnimalType.setAnimalType(input.next());
-        vr.addAnimalType(AnimalType);
+        atr.addAnimalType(AnimalType);
         System.out.println("Animal type added!");
 
         menuChoice(input);

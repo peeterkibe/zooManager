@@ -48,4 +48,5 @@ public class VeterinarianRepository {
                 setParameter(1, name).
                 getResultList();
     }
+
 }

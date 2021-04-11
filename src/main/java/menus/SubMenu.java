@@ -96,7 +96,7 @@ public class SubMenu {
                     menuAddVeterinarian(input);
                     break;
                 case 3:
-
+                    menuFindHandlerById(input);
                     break;
                 case 4:
                     menuSearchVeterinarianByName(input);
@@ -167,5 +167,11 @@ public class SubMenu {
         System.out.println("The following Veterinarians found:");
         for (Veterinarian m : VeterinarianList)
             System.out.println(m);
+    }
+
+    public void menuFindHandlerById(Scanner input){
+        System.out.println("Enter handlers' id:");
+        int id = input.nextInt();
+        System.out.println(hr.findById(id));
     }
 }

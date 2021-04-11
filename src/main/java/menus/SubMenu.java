@@ -1,10 +1,12 @@
 package menus;
 
+import model.Animal;
 import model.AnimalType;
 import model.Handler;
 import model.Login;
 import model.Veterinarian;
 import net.bytebuddy.jar.asm.Handle;
+import persistence.AnimalRepository;
 import persistence.AnimalTypeRepository;
 import persistence.HandlerRepository;
 import persistence.LoginRepository;
@@ -20,6 +22,7 @@ public class SubMenu {
     private HandlerRepository hr;
     private VeterinarianRepository vr;
     private LoginRepository lr;
+    private AnimalRepository ar;
     private AnimalTypeRepository atr;
 
     public SubMenu() {
@@ -106,7 +109,7 @@ public class SubMenu {
                     menuSearchVeterinarianByName(input);
                     break;
                 case 5:
-
+                    menuListAnimals();
                     break;
                 case 6:
                     menuAnimalType(input);
@@ -179,6 +182,13 @@ public class SubMenu {
         int id = input.nextInt();
         System.out.println(hr.findById(id));
     }
+
+    public void menuListAnimals(){
+        List<Animal> result = ar.listAnimals();
+        System.out.println("Animals:");
+        for (Animal animal : result){
+            System.out.println(animal);
+        }
     public void menuAddAnimalType(Scanner input){
        AnimalType AnimalType = new AnimalType();
 

@@ -4,6 +4,7 @@ import model.Animal;
 import util.DBUtil;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class AnimalRepository {
     private EntityManager em;
@@ -39,6 +40,12 @@ public class AnimalRepository {
         } catch (Exception e) {
             this.em.getTransaction().rollback();
         }
+    }
+
+    public List<Animal> listAnimals(){
+        String sql = "select * from animal";
+        return this.em.createQuery(sql, Animal.class).getResultList();
+
     }
 }
 

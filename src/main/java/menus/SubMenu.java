@@ -1,11 +1,13 @@
 package menus;
 
 import model.Animal;
+import model.AnimalType;
 import model.Handler;
 import model.Login;
 import model.Veterinarian;
 import net.bytebuddy.jar.asm.Handle;
 import persistence.AnimalRepository;
+import persistence.AnimalTypeRepository;
 import persistence.HandlerRepository;
 import persistence.LoginRepository;
 import persistence.VeterinarianRepository;
@@ -21,11 +23,13 @@ public class SubMenu {
     private VeterinarianRepository vr;
     private LoginRepository lr;
     private AnimalRepository ar;
+    private AnimalTypeRepository atr;
 
     public SubMenu() {
     this.hr = new HandlerRepository();
     this.vr = new VeterinarianRepository();
     this.lr = new LoginRepository();
+    this.atr = new AnimalTypeRepository;
     }
 
     private int menuOptions(Scanner input) {
@@ -38,7 +42,7 @@ public class SubMenu {
         System.out.println("3: Search Handler by Id");
         System.out.println("4: Search Veterinarian by Name");
         System.out.println("5: List all Animals");
-        System.out.println("6: List animals by Animal Type");
+        System.out.println("6: Add AnimalType");
         System.out.println("7: ");
         System.out.println("100 - Quit");
 
@@ -108,7 +112,7 @@ public class SubMenu {
                     menuListAnimals();
                     break;
                 case 6:
-
+                    menuAnimalType(input);
                     break;
                 case 7:
 
@@ -163,6 +167,7 @@ public class SubMenu {
         menuChoice(input);
     }
 
+
     public void menuSearchVeterinarianByName(Scanner input) {
         System.out.println("Please enter the Veterinarian name");
         String name = input.next();
@@ -172,7 +177,7 @@ public class SubMenu {
             System.out.println(m);
     }
 
-    public void menuFindHandlerById(Scanner input){
+    public void menuAnimalType(Scanner input){
         System.out.println("Enter handlers' id:");
         int id = input.nextInt();
         System.out.println(hr.findById(id));
@@ -184,5 +189,15 @@ public class SubMenu {
         for (Animal animal : result){
             System.out.println(animal);
         }
+    public void menuAddAnimalType(Scanner input){
+       AnimalType AnimalType = new AnimalType();
+
+        System.out.println("You are adding a new veterinarian!");
+        System.out.println("Please enter animal type:");
+        AnimalType.setAnimalType(input.next());
+        atr.addAnimalType(AnimalType);
+        System.out.println("Animal type added!");
+
+        menuChoice(input);
     }
 }

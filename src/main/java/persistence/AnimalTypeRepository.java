@@ -43,4 +43,7 @@ public class AnimalTypeRepository {
             this.em.getTransaction().rollback();
         }
     }
+
+    public void addAnimalType(AnimalType animalType) {
+    }
 }

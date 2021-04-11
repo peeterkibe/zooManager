@@ -49,4 +49,6 @@ public class VeterinarianRepository {
                 getResultList();
     }
 
+    public void addAnimalType(Veterinarian animalType) {
+    }
 }

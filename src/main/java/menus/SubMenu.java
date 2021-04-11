@@ -160,7 +160,7 @@ public class SubMenu {
 
         menuChoice(input);
     }
-    
+
 
     public void menuSearchVeterinarianByName(Scanner input) {
         System.out.println("Please enter the Veterinarian name");

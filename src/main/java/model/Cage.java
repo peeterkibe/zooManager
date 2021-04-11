@@ -18,7 +18,7 @@ public class Cage {
     private Handler handler;
 
     @ManyToOne
-    @JoinColumn (name = "AnimalType")
+    @JoinColumn (name = "animalType")
     private AnimalType animalType;
 
     public int getAnimalType() { return AnimalType; }

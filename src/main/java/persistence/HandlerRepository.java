@@ -42,4 +42,8 @@ public class HandlerRepository {
             this.em.getTransaction().rollback();
         }
     }
+
+    public Handler findById(int id){
+        return em.find(Handler.class, id);
+    }
 }

@@ -159,4 +159,10 @@ public class SubMenu {
         menuChoice(input);
     }
 
+    public void menuFindHandlerById(Scanner input){
+        System.out.println("Enter handlers' id:");
+        int id = input.nextInt();
+        System.out.println(hr.findById(id));
+    }
+
 }

@@ -99,7 +99,7 @@ public class SubMenu {
 
                     break;
                 case 4:
-
+                    menuSearchVeterinarianByName(input);
                     break;
                 case 5:
 

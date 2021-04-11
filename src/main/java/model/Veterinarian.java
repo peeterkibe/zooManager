@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Veterinarian {
@@ -15,6 +12,9 @@ public class Veterinarian {
     private String phoneNumber;
     private String email;
 
+    @OneToMany
+    @JoinColumn(name = "scheduleId")
+    private Schedule schedule;
 
     public int getIdVeterinarian() {
         return idVeterinarian;
@@ -54,6 +54,14 @@ public class Veterinarian {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     @Override

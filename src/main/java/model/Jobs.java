@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Jobs {
@@ -11,6 +8,31 @@ public class Jobs {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idJobs;
     private String jobDescription;
+
+    @ManyToOne
+    @JoinColumn( name = "idHandler")
+    private Handler handler;
+
+    @OneToMany
+    @JoinColumn(name = "workSchedule")
+    private Schedule schedule;
+
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
 
     public int getIdJobs() {
         return idJobs;

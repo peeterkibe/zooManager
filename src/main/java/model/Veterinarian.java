@@ -12,7 +12,7 @@ public class Veterinarian {
     private String phoneNumber;
     private String email;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "scheduleId")
     private Schedule schedule;
 

@@ -17,7 +17,7 @@ public class Cage {
     @JoinColumn (name = "idHandler")
     private Handler handler;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn (name = "AnimalType")
     private AnimalType animalType;
 

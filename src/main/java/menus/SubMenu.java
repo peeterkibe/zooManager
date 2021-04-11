@@ -1,12 +1,18 @@
 package menus;
 
+import model.Handler;
+import net.bytebuddy.jar.asm.Handle;
+import persistence.HandlerRepository;
 import util.DBUtil;
 
 import java.util.Scanner;
 
 public class SubMenu {
-    public SubMenu() {
+    private HandlerRepository hr;
 
+
+    public SubMenu() {
+    this.hr = new HandlerRepository();
     }
 
     private int menuOptions(Scanner input) {
@@ -32,7 +38,7 @@ public class SubMenu {
             userChoice = menuOptions(input);
             switch (userChoice) {
                 case 1:
-
+                    menuAddHandler(input);
                     break;
                 case 2:
 
@@ -65,4 +71,25 @@ public class SubMenu {
         System.out.println("Closing system...");
         System.out.println("Thank you. Good Bye.");
     }
+
+    public void menuAddHandler(Scanner input){
+        Handler handler = new Handler();
+
+        System.out.println("You are adding a new handler!");
+        System.out.println("Please enter first name:");
+        handler.setFirstName(input.next());
+        System.out.println("Please enter last name:");
+        handler.setLastName(input.next());
+        System.out.println("Please enter phone number;");
+        handler.setPhoneNumber(input.next());
+        System.out.println("Please enter email");
+        handler.setEmail(input.next());
+        hr.addHandler(handler);
+        System.out.println("Handler added!");
+
+        menuChoice(input);
+    }
+
+    
+
 }

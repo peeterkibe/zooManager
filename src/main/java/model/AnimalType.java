@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class AnimalType {
@@ -13,6 +10,10 @@ public class AnimalType {
      private String animalType;
      private String feed;
      private int speciesOfAnimals;
+
+     @OneToMany
+     @JoinColumn (name = "speciesOfAnimal")
+     private Animal animal;
 
     public int getIdAnimalType() {
         return idAnimalType;

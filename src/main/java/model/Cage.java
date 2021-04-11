@@ -23,5 +23,11 @@ public class Cage {
 
     public void setEnclosureName(String enclosureName) { this.enclosureName = enclosureName; }
 
-
+    @Override
+    public String toString() {
+        return "Cage{" +
+                "idCage=" + idCage +
+                ", enclosureName='" + enclosureName + '\'' +
+                '}';
+    }
 }

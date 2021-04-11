@@ -1,22 +1,27 @@
 package menus;
 
 import model.Handler;
+import model.Login;
 import model.Veterinarian;
 import net.bytebuddy.jar.asm.Handle;
 import persistence.HandlerRepository;
+import persistence.LoginRepository;
 import persistence.VeterinarianRepository;
 import util.DBUtil;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SubMenu {
     private HandlerRepository hr;
     private VeterinarianRepository vr;
-
+    private LoginRepository lr;
 
     public SubMenu() {
     this.hr = new HandlerRepository();
     this.vr = new VeterinarianRepository();
+    this.lr = new LoginRepository();
     }
 
     private int menuOptions(Scanner input) {
@@ -35,6 +40,48 @@ public class SubMenu {
 
         return input.nextInt();
     }
+    public void login(Scanner input) {
+        System.out.println("Please enter the username");
+        String name = input.next();
+        System.out.println("Please enter the password");
+        String password = input.next();
+
+        Login login = new Login();
+        login.setUserName(name);
+
+        login.setPassword(password);
+        boolean result = lr.validateLogin(login);
+
+        if(result) {
+            menuChoice(input);
+        } else {
+            System.out.println("Username or Password invalid. Access denied.");
+            DBUtil.shutdown();
+            input.close();
+        }
+
+    }
+
+    public boolean isUsernameValid(String user) {
+
+        String regExpn = "^[a-zA-Z0-9]+(?=\\S+$)$";
+
+        Pattern pattern = Pattern.compile(regExpn);
+        Matcher matcher = pattern.matcher(user);
+
+        return (matcher.matches());
+    }
+
+    public boolean isPasswordValid(String pass) {
+
+        String regExpn = "^{8,}$";
+
+        Pattern pattern = Pattern.compile(regExpn);
+        Matcher matcher = pattern.matcher(pass);
+
+        return (matcher.matches());
+    }
+
     public void menuChoice(Scanner input) {
 
         int userChoice;

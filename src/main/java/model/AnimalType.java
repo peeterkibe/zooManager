@@ -11,7 +11,7 @@ public class AnimalType {
      private String feed;
      private int speciesOfAnimals;
 
-     @OneToMany
+     @ManyToOne
      @JoinColumn (name = "speciesOfAnimal")
      private Animal animal;
 

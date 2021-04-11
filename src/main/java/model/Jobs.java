@@ -13,7 +13,7 @@ public class Jobs {
     @JoinColumn( name = "idHandler")
     private Handler handler;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "workSchedule")
     private Schedule schedule;
 

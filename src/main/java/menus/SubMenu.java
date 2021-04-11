@@ -29,7 +29,7 @@ public class SubMenu {
     this.hr = new HandlerRepository();
     this.vr = new VeterinarianRepository();
     this.lr = new LoginRepository();
-    this.atr = new AnimalTypeRepository;
+    this.atr = new AnimalTypeRepository();
     }
 
     private int menuOptions(Scanner input) {
@@ -112,7 +112,7 @@ public class SubMenu {
                     menuListAnimals();
                     break;
                 case 6:
-                    menuAnimalType(input);
+                    menuAddAnimalType(input);
                     break;
                 case 7:
 
@@ -183,12 +183,18 @@ public class SubMenu {
         System.out.println(hr.findById(id));
     }
 
-    public void menuListAnimals(){
+    public void menuListAnimals() {
         List<Animal> result = ar.listAnimals();
         System.out.println("Animals:");
-        for (Animal animal : result){
+        for (Animal animal : result) {
             System.out.println(animal);
         }
+    }
+
+    public void menuFindHandlerById( Scanner input){
+        System.out.println("Enter handlers' id:");
+        System.out.println(hr.findById(input.nextInt()));
+    }
     public void menuAddAnimalType(Scanner input){
        AnimalType AnimalType = new AnimalType();
 

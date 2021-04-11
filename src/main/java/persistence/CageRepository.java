@@ -13,9 +13,6 @@ public class CageRepository {
         this.em = DBUtil.getEntityManager();
     }
 
-    public CageRepository (DBUtil dbUtil) {
-    }
-
     public void saveCage(Cage cage) {
         try {
             this.em.getTransaction().begin();

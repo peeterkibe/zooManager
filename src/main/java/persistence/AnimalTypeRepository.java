@@ -13,8 +13,6 @@ public class AnimalTypeRepository {
         this.em = DBUtil.getEntityManager();
     }
 
-    public AnimalTypeRepository (DBUtil dbUtil) {
-    }
 
     public void saveAnimalType(AnimalType animalType) {
         try {

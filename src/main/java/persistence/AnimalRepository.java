@@ -11,9 +11,6 @@ public class AnimalRepository {
         this.em = DBUtil.getEntityManager();
     }
 
-    public AnimalRepository (DBUtil dbUtil) {
-    }
-
     public void saveAnimal(Animal animal) {
         try {
             this.em.getTransaction().begin();

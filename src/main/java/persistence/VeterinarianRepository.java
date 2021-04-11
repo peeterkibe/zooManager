@@ -4,6 +4,7 @@ import model.Veterinarian;
 import util.DBUtil;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class VeterinarianRepository {
     private EntityManager em;
@@ -40,5 +41,11 @@ public class VeterinarianRepository {
         } catch (Exception e) {
             this.em.getTransaction().rollback();
         }
+
+    }
+    public List<Veterinarian> searchByName(String name) {
+        return this.em.createQuery("SELECT m FROM Veterinarian m WHERE m.name = ?1", Veterinarian.class).
+                setParameter(1, name).
+                getResultList();
     }
 }

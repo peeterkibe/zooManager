@@ -1,18 +1,22 @@
 package menus;
 
 import model.Handler;
+import model.Veterinarian;
 import net.bytebuddy.jar.asm.Handle;
 import persistence.HandlerRepository;
+import persistence.VeterinarianRepository;
 import util.DBUtil;
 
 import java.util.Scanner;
 
 public class SubMenu {
     private HandlerRepository hr;
+    private VeterinarianRepository vr;
 
 
     public SubMenu() {
     this.hr = new HandlerRepository();
+    this.vr = new VeterinarianRepository();
     }
 
     private int menuOptions(Scanner input) {
@@ -41,7 +45,7 @@ public class SubMenu {
                     menuAddHandler(input);
                     break;
                 case 2:
-
+                    menuAddVeterinarian(input);
                     break;
                 case 3:
 
@@ -90,6 +94,22 @@ public class SubMenu {
         menuChoice(input);
     }
 
-    
+    public void menuAddVeterinarian(Scanner input){
+        Veterinarian veterinarian = new Veterinarian();
+
+        System.out.println("You are adding a new veterinarian!");
+        System.out.println("Please enter first name:");
+        veterinarian.setFirstName(input.next());
+        System.out.println("Please enter last name:");
+        veterinarian.setLastName(input.next());
+        System.out.println("Please enter phone number;");
+        veterinarian.setPhoneNumber(input.next());
+        System.out.println("Please enter email");
+        veterinarian.setEmail(input.next());
+        vr.addVeterinarian(veterinarian);
+        System.out.println("Veterinarian added!");
+
+        menuChoice(input);
+    }
 
 }

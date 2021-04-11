@@ -163,9 +163,9 @@ public class SubMenu {
     private void menuSearchVeterinarianByName(Scanner input) {
         System.out.println("Please enter the movie name");
         String name = input.next();
-        List<Veterinarian> movieList = vr.searchByName(name);
+        List<Veterinarian> VeterinarianList = vr.searchByName(name);
         System.out.println("The following movies found:");
-        for (Veterinarian m : movieList)
+        for (Veterinarian m : VeterinarianList)
             System.out.println(m);
     }
 }
